@@ -305,6 +305,120 @@
           color: #5f6368;
           font-size: 14px;
       }
+
+      /* Image Upload Styles */
+      .file-upload-area {
+          border: 2px dashed #dadce0;
+          border-radius: 8px;
+          padding: 24px;
+          text-align: center;
+          transition: all 0.2s;
+          cursor: pointer;
+          background: #fafafa;
+      }
+
+      .file-upload-area:hover {
+          border-color: #673ab7;
+          background: #f5f3f7;
+      }
+
+      .file-upload-area.dragover {
+          border-color: #673ab7;
+          background: #ede7f6;
+      }
+
+      .file-upload-icon {
+          font-size: 48px;
+          color: #9e9e9e;
+          margin-bottom: 12px;
+      }
+
+      .file-upload-text {
+          font-size: 14px;
+          color: #5f6368;
+          margin-bottom: 8px;
+      }
+
+      .file-upload-hint {
+          font-size: 12px;
+          color: #9e9e9e;
+      }
+
+      input[type="file"] {
+          display: none;
+      }
+
+      .image-preview-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 12px;
+          margin-top: 16px;
+      }
+
+      .image-preview {
+          position: relative;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      .image-preview img {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          display: block;
+      }
+
+      .image-preview-remove {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          background: rgba(244, 67, 54, 0.9);
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 28px;
+          height: 28px;
+          font-size: 16px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.2s;
+      }
+
+      .image-preview-remove:hover {
+          background: rgba(244, 67, 54, 1);
+      }
+
+      .upload-progress {
+          margin-top: 16px;
+          padding: 12px;
+          background: #e3f2fd;
+          border-radius: 8px;
+          display: none;
+      }
+
+      .upload-progress-text {
+          font-size: 14px;
+          color: #1976d2;
+          margin-bottom: 8px;
+      }
+
+      .upload-progress-bar {
+          width: 100%;
+          height: 8px;
+          background: #bbdefb;
+          border-radius: 4px;
+          overflow: hidden;
+      }
+
+      .upload-progress-fill {
+          height: 100%;
+          background: #2196F3;
+          width: 0%;
+          transition: width 0.3s;
+      }
   </style>
 </head>
 <body>
@@ -327,7 +441,7 @@
     <div class="form-section">
       <h2 class="section-title">Sign In Required</h2>
       <div class="info-message">
-        This form is restricted to authorized review board members only. Please sign in to continue.
+        This form is restricted to authorized review team members only. Please sign in to continue.
       </div>
 
       <div class="question">
@@ -357,7 +471,7 @@
       </button>
 
       <p style="text-align: center; margin-top: 16px; color: #5f6368; font-size: 12px;">
-        Don't have an account? Contact the Board Administrator (board@stvha.org) to get access.
+        Don't have an account? Contact the Board Administrator to get access.
       </p>
     </div>
   </div>
@@ -385,6 +499,32 @@
         <div class="question">
           <label class="question-label">Property Address<span class="required">*</span></label>
           <input type="text" name="propertyAddress" placeholder="Enter property address" required>
+        </div>
+      </div>
+
+      <!-- Photo Upload Section -->
+      <div class="form-section">
+        <h2 class="section-title">Property Photos</h2>
+        <div class="question">
+          <label class="question-label">Upload Photos (Optional)</label>
+          <p class="file-upload-hint" style="margin-bottom: 12px;">Add photos to document violations or property condition</p>
+
+          <div class="file-upload-area" id="fileUploadArea">
+            <div class="file-upload-icon">📷</div>
+            <div class="file-upload-text">Click to upload or drag and drop</div>
+            <div class="file-upload-hint">PNG, JPG, HEIC up to 10MB each (Max 10 photos)</div>
+          </div>
+
+          <input type="file" id="fileInput" accept="image/*" multiple>
+
+          <div class="image-preview-container" id="imagePreviewContainer"></div>
+
+          <div class="upload-progress" id="uploadProgress">
+            <div class="upload-progress-text" id="uploadProgressText">Uploading images...</div>
+            <div class="upload-progress-bar">
+              <div class="upload-progress-fill" id="uploadProgressFill"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1048,6 +1188,7 @@
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
   import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
   import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+  import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
   // TODO: Replace with your Firebase configuration
   const firebaseConfig = {
@@ -1059,11 +1200,11 @@
     appId: "1:609348961099:web:ef08e0b3053e0ec1415ece"
   };
 
-
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth(app);
+  const storage = getStorage(app);
   const googleProvider = new GoogleAuthProvider();
 
   // DOM elements
@@ -1081,6 +1222,145 @@
   const googleSignInBtn = document.getElementById('googleSignInBtn');
   const signOutBtn = document.getElementById('signOutBtn');
   const userEmail = document.getElementById('userEmail');
+
+  // Image upload elements
+  const fileUploadArea = document.getElementById('fileUploadArea');
+  const fileInput = document.getElementById('fileInput');
+  const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+  const uploadProgress = document.getElementById('uploadProgress');
+  const uploadProgressText = document.getElementById('uploadProgressText');
+  const uploadProgressFill = document.getElementById('uploadProgressFill');
+
+  let selectedFiles = [];
+  let uploadedImageUrls = [];
+
+  // File upload handlers
+  fileUploadArea.addEventListener('click', () => fileInput.click());
+
+  fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+  // Drag and drop
+  fileUploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    fileUploadArea.classList.add('dragover');
+  });
+
+  fileUploadArea.addEventListener('dragleave', () => {
+    fileUploadArea.classList.remove('dragover');
+  });
+
+  fileUploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    fileUploadArea.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+
+  function handleFiles(files) {
+    const maxFiles = 10;
+    const maxSize = 10 * 1024 * 1024; // 10MB
+
+    const fileArray = Array.from(files);
+
+    // Filter for images only
+    const imageFiles = fileArray.filter(file => file.type.startsWith('image/'));
+
+    // Check total number of files
+    if (selectedFiles.length + imageFiles.length > maxFiles) {
+      showError(`Maximum ${maxFiles} images allowed`);
+      return;
+    }
+
+    // Check file sizes
+    const oversizedFiles = imageFiles.filter(file => file.size > maxSize);
+    if (oversizedFiles.length > 0) {
+      showError('Some files are too large. Maximum size is 10MB per image.');
+      return;
+    }
+
+    // Add new files
+    imageFiles.forEach(file => {
+      selectedFiles.push(file);
+      displayImagePreview(file);
+    });
+  }
+
+  function displayImagePreview(file) {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const previewDiv = document.createElement('div');
+      previewDiv.className = 'image-preview';
+      previewDiv.dataset.filename = file.name;
+
+      const img = document.createElement('img');
+      img.src = e.target.result;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'image-preview-remove';
+      removeBtn.innerHTML = '×';
+      removeBtn.type = 'button';
+      removeBtn.onclick = () => removeImage(file.name);
+
+      previewDiv.appendChild(img);
+      previewDiv.appendChild(removeBtn);
+      imagePreviewContainer.appendChild(previewDiv);
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  function removeImage(filename) {
+    selectedFiles = selectedFiles.filter(file => file.name !== filename);
+    const preview = imagePreviewContainer.querySelector(`[data-filename="${filename}"]`);
+    if (preview) preview.remove();
+  }
+
+  async function uploadImages() {
+    if (selectedFiles.length === 0) {
+      return [];
+    }
+
+    uploadProgress.style.display = 'block';
+    const urls = [];
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+      const filename = `compliance-photos/${Date.now()}-${file.name}`;
+      const storageRef = ref(storage, filename);
+
+      uploadProgressText.textContent = `Uploading image ${i + 1} of ${selectedFiles.length}...`;
+
+      try {
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        const url = await new Promise((resolve, reject) => {
+          uploadTask.on('state_changed',
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              const overallProgress = ((i + (progress / 100)) / selectedFiles.length) * 100;
+              uploadProgressFill.style.width = overallProgress + '%';
+            },
+            (error) => {
+              console.error('Upload error:', error);
+              reject(error);
+            },
+            async () => {
+              const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve(downloadURL);
+            }
+          );
+        });
+
+        urls.push(url);
+      } catch (error) {
+        console.error('Error uploading file:', file.name, error);
+        throw error;
+      }
+    }
+
+    uploadProgress.style.display = 'none';
+    return urls;
+  }
 
   // Check authentication state
   onAuthStateChanged(auth, (user) => {
@@ -1111,7 +1391,6 @@
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // User will be automatically redirected by onAuthStateChanged
     } catch (error) {
       console.error('Sign in error:', error);
       let errorMsg = 'Sign in failed. ';
@@ -1145,13 +1424,14 @@
 
     try {
       await signInWithPopup(auth, googleProvider);
-      // User will be automatically redirected by onAuthStateChanged
     } catch (error) {
       console.error('Google sign in error:', error);
       let errorMsg = 'Google sign in failed. ';
 
       if (error.code === 'auth/popup-closed-by-user') {
         errorMsg += 'Sign in cancelled.';
+      } else if (error.code === 'auth/unauthorized-domain') {
+        errorMsg += 'This domain is not authorized. Please add it in Firebase Console → Authentication → Settings → Authorized domains.';
       } else {
         errorMsg += error.message;
       }
@@ -1177,6 +1457,11 @@
       await signOut(auth);
       signInEmail.value = '';
       signInPassword.value = '';
+
+      // Clear image uploads
+      selectedFiles = [];
+      uploadedImageUrls = [];
+      imagePreviewContainer.innerHTML = '';
     } catch (error) {
       console.error('Sign out error:', error);
       showError('Sign out failed: ' + error.message);
@@ -1195,25 +1480,32 @@
 
     // Disable submit button
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
+    submitBtn.textContent = 'Uploading Images...';
 
     // Hide previous messages
     successMessage.style.display = 'none';
     errorMessage.style.display = 'none';
 
-    // Collect form data
-    const formData = new FormData(form);
-    const data = {};
-
-    for (let [key, value] of formData.entries()) {
-      data[key] = value;
-    }
-
-    // Add metadata
-    data.submittedAt = new Date().toISOString();
-    data.submittedBy = auth.currentUser.email;
-
     try {
+      // Upload images first
+      const imageUrls = await uploadImages();
+
+      submitBtn.textContent = 'Submitting Form...';
+
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {};
+
+      for (let [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+
+      // Add metadata
+      data.submittedAt = new Date().toISOString();
+      data.submittedBy = auth.currentUser.email;
+      data.images = imageUrls;
+      data.imageCount = imageUrls.length;
+
       // Add document to Firestore
       const docRef = await addDoc(collection(db, "complianceReviews"), data);
       console.log("Document written with ID: ", docRef.id);
@@ -1223,6 +1515,10 @@
 
       // Reset form
       form.reset();
+      selectedFiles = [];
+      uploadedImageUrls = [];
+      imagePreviewContainer.innerHTML = '';
+      fileInput.value = '';
 
       // Scroll to top to show success message
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1233,7 +1529,7 @@
       }, 5000);
 
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error submitting form: ", error);
       showError('Error submitting form: ' + error.message);
     } finally {
       // Re-enable submit button

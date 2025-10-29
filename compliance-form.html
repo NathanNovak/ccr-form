@@ -10,18 +10,18 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Google Sans', Roboto, Arial, sans-serif;
             background-color: #f0ebf8;
             padding: 20px;
         }
-        
+
         .form-container {
             max-width: 770px;
             margin: 0 auto;
         }
-        
+
         .form-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 8px 8px 0 0;
@@ -29,20 +29,20 @@
             color: white;
             margin-bottom: 12px;
         }
-        
+
         .form-title {
             font-size: 32px;
             font-weight: 400;
             margin-bottom: 8px;
             line-height: 1.2;
         }
-        
+
         .form-description {
             font-size: 14px;
             opacity: 0.9;
             margin-top: 12px;
         }
-        
+
         .form-section {
             background: white;
             border-radius: 8px;
@@ -50,15 +50,15 @@
             margin-bottom: 12px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
-        
+
         .question {
             margin-bottom: 24px;
         }
-        
+
         .question:last-child {
             margin-bottom: 0;
         }
-        
+
         .question-label {
             font-size: 16px;
             font-weight: 400;
@@ -66,12 +66,12 @@
             margin-bottom: 12px;
             display: block;
         }
-        
+
         .required {
             color: #d93025;
             margin-left: 4px;
         }
-        
+
         .section-title {
             font-size: 18px;
             font-weight: 500;
@@ -82,7 +82,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         input[type="text"],
         input[type="email"],
         input[type="password"],
@@ -97,7 +97,7 @@
             transition: border-bottom-color 0.2s;
             background: transparent;
         }
-        
+
         input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="password"]:focus,
@@ -107,7 +107,7 @@
             border-bottom-color: #673ab7;
             border-bottom-width: 2px;
         }
-        
+
         textarea {
             resize: vertical;
             min-height: 100px;
@@ -115,25 +115,25 @@
             border-radius: 4px;
             padding: 12px;
         }
-        
+
         textarea:focus {
             border: 2px solid #673ab7;
         }
-        
+
         .radio-group {
             display: flex;
             flex-direction: row;
             gap: 24px;
             flex-wrap: wrap;
         }
-        
+
         .radio-option {
             display: flex;
             align-items: center;
             cursor: pointer;
             position: relative;
         }
-        
+
         .radio-option input[type="radio"] {
             appearance: none;
             width: 20px;
@@ -145,11 +145,11 @@
             position: relative;
             transition: all 0.2s;
         }
-        
+
         .radio-option input[type="radio"]:checked {
             border-color: #673ab7;
         }
-        
+
         .radio-option input[type="radio"]:checked::after {
             content: '';
             position: absolute;
@@ -161,13 +161,13 @@
             border-radius: 50%;
             background: #673ab7;
         }
-        
+
         .radio-option label {
             font-size: 14px;
             color: #202124;
             cursor: pointer;
         }
-        
+
         .submit-btn, .auth-btn {
             background: #673ab7;
             color: white;
@@ -183,33 +183,33 @@
             width: 100%;
             margin-bottom: 12px;
         }
-        
+
         .submit-btn:hover, .auth-btn:hover {
             background: #5e35b1;
         }
-        
+
         .submit-btn:disabled, .auth-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
         }
-        
+
         .google-btn {
             background: white;
             color: #202124;
             border: 1px solid #dadce0;
         }
-        
+
         .google-btn:hover {
             background: #f8f9fa;
         }
-        
+
         .item-label {
             font-size: 14px;
             color: #202124;
             margin-bottom: 8px;
             font-weight: 400;
         }
-        
+
         .success-message {
             background: #4caf50;
             color: white;
@@ -219,7 +219,7 @@
             text-align: center;
             display: none;
         }
-        
+
         .error-message {
             background: #f44336;
             color: white;
@@ -229,7 +229,7 @@
             text-align: center;
             display: none;
         }
-        
+
         .info-message {
             background: #2196F3;
             color: white;
@@ -238,15 +238,15 @@
             margin-bottom: 12px;
             text-align: center;
         }
-        
+
         #authContainer {
             display: block;
         }
-        
+
         #formContainer {
             display: none;
         }
-        
+
         .user-info {
             background: white;
             border-radius: 8px;
@@ -257,12 +257,12 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .user-email {
             font-size: 14px;
             color: #5f6368;
         }
-        
+
         .signout-btn {
             background: transparent;
             color: #673ab7;
@@ -276,18 +276,18 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .signout-btn:hover {
             background: #673ab7;
             color: white;
         }
-        
+
         .auth-divider {
             text-align: center;
             margin: 20px 0;
             position: relative;
         }
-        
+
         .auth-divider::before {
             content: '';
             position: absolute;
@@ -297,7 +297,7 @@
             height: 1px;
             background: #dadce0;
         }
-        
+
         .auth-divider span {
             background: white;
             padding: 0 16px;
@@ -305,7 +305,7 @@
             color: #5f6368;
             font-size: 14px;
         }
-        
+
         /* Image Upload Styles */
         .file-upload-area {
             border: 2px dashed #dadce0;
@@ -316,59 +316,59 @@
             cursor: pointer;
             background: #fafafa;
         }
-        
+
         .file-upload-area:hover {
             border-color: #673ab7;
             background: #f5f3f7;
         }
-        
+
         .file-upload-area.dragover {
             border-color: #673ab7;
             background: #ede7f6;
         }
-        
+
         .file-upload-icon {
             font-size: 48px;
             color: #9e9e9e;
             margin-bottom: 12px;
         }
-        
+
         .file-upload-text {
             font-size: 14px;
             color: #5f6368;
             margin-bottom: 8px;
         }
-        
+
         .file-upload-hint {
             font-size: 12px;
             color: #9e9e9e;
         }
-        
+
         input[type="file"] {
             display: none;
         }
-        
+
         .image-preview-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 12px;
             margin-top: 16px;
         }
-        
+
         .image-preview {
             position: relative;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .image-preview img {
             width: 100%;
             height: 150px;
             object-fit: cover;
             display: block;
         }
-        
+
         .image-preview-remove {
             position: absolute;
             top: 8px;
@@ -386,11 +386,11 @@
             justify-content: center;
             transition: background 0.2s;
         }
-        
+
         .image-preview-remove:hover {
             background: rgba(244, 67, 54, 1);
         }
-        
+
         .upload-progress {
             margin-top: 16px;
             padding: 12px;
@@ -398,13 +398,13 @@
             border-radius: 8px;
             display: none;
         }
-        
+
         .upload-progress-text {
             font-size: 14px;
             color: #1976d2;
             margin-bottom: 8px;
         }
-        
+
         .upload-progress-bar {
             width: 100%;
             height: 8px;
@@ -412,7 +412,7 @@
             border-radius: 4px;
             overflow: hidden;
         }
-        
+
         .upload-progress-fill {
             height: 100%;
             background: #2196F3;
@@ -446,16 +446,16 @@
         <div class="success-message" id="successMessage">
             Form submitted successfully! The form has been reset.
         </div>
-        
+
         <div class="error-message" id="errorMessage">
             Error submitting form. Please try again.
         </div>
-        
+
         <div class="form-header">
             <h1 class="form-title">Sunrise Territory Village<br>CCR Compliance Review Checklist</h1>
             <p class="form-description">Board of Directors Property Compliance Review<br>Check appropriate box for each item. Add comments in the designated areas.</p>
         </div>
-        
+
         <!-- Authentication Container -->
         <div id="authContainer">
             <div class="form-section">
@@ -463,23 +463,23 @@
                 <div class="info-message">
                     This form is restricted to authorized review team members only. Please sign in to continue.
                 </div>
-                
+
                 <div class="question">
                     <label class="question-label">Email</label>
                     <input type="email" id="signInEmail" placeholder="your.email@example.com">
                 </div>
-                
+
                 <div class="question">
                     <label class="question-label">Password</label>
                     <input type="password" id="signInPassword" placeholder="Enter your password">
                 </div>
-                
+
                 <button class="auth-btn" id="signInBtn">Sign In</button>
-                
+
                 <div class="auth-divider">
                     <span>OR</span>
                 </div>
-                
+
                 <button class="auth-btn google-btn" id="googleSignInBtn">
                     <svg width="18" height="18" style="vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -489,7 +489,7 @@
                     </svg>
                     Sign in with Google
                 </button>
-                
+
                 <p style="text-align: center; margin-top: 16px; color: #5f6368; font-size: 12px;">
                     Don't have an account? Contact the Board Administrator to get access.
                 </p>
@@ -499,7 +499,7 @@
                 <a href="admin-image-viewer.html">🔐 Admin Portal - View Submissions</a>
             </div>
         </div>
-        
+
         <!-- Main Form Container (Hidden until authenticated) -->
         <div id="formContainer">
             <div class="user-info" id="userInfo">
@@ -510,7 +510,7 @@
             <div class="admin-link">
                 <a href="admin-image-viewer.html">🔐 Admin Portal - View All Submissions</a>
             </div>
-            
+
             <form id="complianceForm">
                 <!-- Basic Information Section -->
                 <div class="form-section">
@@ -518,35 +518,35 @@
                         <label class="question-label">Date<span class="required">*</span></label>
                         <input type="date" name="date" required>
                     </div>
-                    
+
                     <div class="question">
                         <label class="question-label">Review Team<span class="required">*</span></label>
                         <input type="text" name="reviewTeam" placeholder="Enter reviewer names" required>
                     </div>
-                    
+
                     <div class="question">
                         <label class="question-label">Property Address<span class="required">*</span></label>
                         <input type="text" name="propertyAddress" placeholder="Enter property address" required>
                     </div>
                 </div>
-                
+
                 <!-- Photo Upload Section -->
                 <div class="form-section">
                     <h2 class="section-title">Property Photos</h2>
                     <div class="question">
                         <label class="question-label">Upload Photos (Optional)</label>
                         <p class="file-upload-hint" style="margin-bottom: 12px;">Add photos to document violations or property condition</p>
-                        
+
                         <div class="file-upload-area" id="fileUploadArea">
                             <div class="file-upload-icon">📷</div>
                             <div class="file-upload-text">Click to upload or drag and drop</div>
                             <div class="file-upload-hint">PNG, JPG, HEIC up to 10MB each (Max 10 photos)</div>
                         </div>
-                        
+
                         <input type="file" id="fileInput" accept="image/*" multiple>
-                        
+
                         <div class="image-preview-container" id="imagePreviewContainer"></div>
-                        
+
                         <div class="upload-progress" id="uploadProgress">
                             <div class="upload-progress-text" id="uploadProgressText">Uploading images...</div>
                             <div class="upload-progress-bar">
@@ -555,11 +555,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Overall Property Appearance -->
                 <div class="form-section">
                     <h2 class="section-title">Overall Property Appearance</h2>
-                    
+
                     <div class="question">
                         <div class="item-label">General appearance and curb appeal</div>
                         <div class="radio-group">
@@ -582,11 +582,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Exterior Structures -->
                 <div class="form-section">
                     <h2 class="section-title">Exterior Structures</h2>
-                    
+
                     <div class="question">
                         <div class="item-label">Paint and/or stucco condition</div>
                         <div class="radio-group">
@@ -608,7 +608,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Tile roof condition</div>
                         <div class="radio-group">
@@ -630,7 +630,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Gutters and downspouts</div>
                         <div class="radio-group">
@@ -652,7 +652,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Windows and screens</div>
                         <div class="radio-group">
@@ -674,7 +674,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Doors and garage doors</div>
                         <div class="radio-group">
@@ -696,7 +696,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Fencing condition and appearance</div>
                         <div class="radio-group">
@@ -719,11 +719,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Hardscape -->
                 <div class="form-section">
                     <h2 class="section-title">Hardscape</h2>
-                    
+
                     <div class="question">
                         <div class="item-label">Driveway condition (cracks, stains, etc.)</div>
                         <div class="radio-group">
@@ -745,7 +745,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Walkways and patios</div>
                         <div class="radio-group">
@@ -768,11 +768,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Landscaping -->
                 <div class="form-section">
                     <h2 class="section-title">Landscaping</h2>
-                    
+
                     <div class="question">
                         <div class="item-label">Overall landscaping condition</div>
                         <div class="radio-group">
@@ -794,7 +794,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Ground cover/xeriscape maintained</div>
                         <div class="radio-group">
@@ -816,7 +816,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Trees and shrubs (trimmed, healthy)</div>
                         <div class="radio-group">
@@ -838,7 +838,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Dead/dying trees, shrubs, cacti, succulents</div>
                         <div class="radio-group">
@@ -860,7 +860,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Mistletoe present in trees</div>
                         <div class="radio-group">
@@ -882,7 +882,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Landscape rocks/gravel maintained</div>
                         <div class="radio-group">
@@ -905,11 +905,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Fixtures & Amenities -->
                 <div class="form-section">
                     <h2 class="section-title">Fixtures & Amenities</h2>
-                    
+
                     <div class="question">
                         <div class="item-label">Mailbox condition</div>
                         <div class="radio-group">
@@ -931,7 +931,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Lamppost condition</div>
                         <div class="radio-group">
@@ -953,7 +953,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">House numbers visible/condition</div>
                         <div class="radio-group">
@@ -975,7 +975,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Exterior lighting functional</div>
                         <div class="radio-group">
@@ -998,11 +998,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Storage & Cleanliness -->
                 <div class="form-section">
                     <h2 class="section-title">Storage & Cleanliness</h2>
-                    
+
                     <div class="question">
                         <div class="item-label">No visible trash/debris</div>
                         <div class="radio-group">
@@ -1024,7 +1024,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Trash cans properly stored</div>
                         <div class="radio-group">
@@ -1046,7 +1046,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">No unauthorized structures/storage</div>
                         <div class="radio-group">
@@ -1069,11 +1069,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Vehicles & Parking -->
                 <div class="form-section">
                     <h2 class="section-title">Vehicles & Parking</h2>
-                    
+
                     <div class="question">
                         <div class="item-label">No inoperable vehicles visible</div>
                         <div class="radio-group">
@@ -1095,7 +1095,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">No commercial vehicles/trailers/RVs</div>
                         <div class="radio-group">
@@ -1117,7 +1117,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <div class="item-label">Vehicles parked in approved areas</div>
                         <div class="radio-group">
@@ -1140,7 +1140,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Detailed Comments -->
                 <div class="form-section">
                     <h2 class="section-title">Detailed Comments / Violation Specifics</h2>
@@ -1149,11 +1149,11 @@
                         <textarea name="detailedComments" placeholder="Enter detailed comments here..."></textarea>
                     </div>
                 </div>
-                
+
                 <!-- Follow-up Actions -->
                 <div class="form-section">
                     <h2 class="section-title">Follow-up Actions</h2>
-                    
+
                     <div class="question">
                         <label class="question-label">Violation Notice Sent?</label>
                         <div class="radio-group">
@@ -1167,22 +1167,22 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="question">
                         <label class="question-label">Violation Notice Date (if applicable)</label>
                         <input type="date" name="violationNoticeDate">
                     </div>
-                    
+
                     <div class="question">
                         <label class="question-label">Compliance Deadline</label>
                         <input type="date" name="complianceDeadline">
                     </div>
-                    
+
                     <div class="question">
                         <label class="question-label">Re-inspection Date</label>
                         <input type="date" name="reinspectionDate">
                     </div>
-                    
+
                     <div class="question">
                         <label class="question-label">Compliance Status</label>
                         <div class="radio-group">
@@ -1201,7 +1201,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Submit Button -->
                 <div class="form-section">
                     <button class="submit-btn" type="submit" id="submitBtn">Submit</button>
@@ -1220,12 +1220,12 @@
 
         // TODO: Replace with your Firebase configuration
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
+          apiKey: "AIzaSyAxwLLF5FNw2u7qtYe8YigXgVpD1rkufk8",
+          authDomain: "sunrise-ccr-compliance.firebaseapp.com",
+          projectId: "sunrise-ccr-compliance",
+          storageBucket: "sunrise-ccr-compliance.firebasestorage.app",
+          messagingSenderId: "609348961099",
+          appId: "1:609348961099:web:ef08e0b3053e0ec1415ece"
         };
 
         // Initialize Firebase
@@ -1242,7 +1242,7 @@
         const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
-        
+
         // Auth elements
         const signInEmail = document.getElementById('signInEmail');
         const signInPassword = document.getElementById('signInPassword');
@@ -1264,19 +1264,19 @@
 
         // File upload handlers
         fileUploadArea.addEventListener('click', () => fileInput.click());
-        
+
         fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
-        
+
         // Drag and drop
         fileUploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
             fileUploadArea.classList.add('dragover');
         });
-        
+
         fileUploadArea.addEventListener('dragleave', () => {
             fileUploadArea.classList.remove('dragover');
         });
-        
+
         fileUploadArea.addEventListener('drop', (e) => {
             e.preventDefault();
             fileUploadArea.classList.remove('dragover');
@@ -1286,25 +1286,25 @@
         function handleFiles(files) {
             const maxFiles = 10;
             const maxSize = 10 * 1024 * 1024; // 10MB
-            
+
             const fileArray = Array.from(files);
-            
+
             // Filter for images only
             const imageFiles = fileArray.filter(file => file.type.startsWith('image/'));
-            
+
             // Check total number of files
             if (selectedFiles.length + imageFiles.length > maxFiles) {
                 showError(`Maximum ${maxFiles} images allowed`);
                 return;
             }
-            
+
             // Check file sizes
             const oversizedFiles = imageFiles.filter(file => file.size > maxSize);
             if (oversizedFiles.length > 0) {
                 showError('Some files are too large. Maximum size is 10MB per image.');
                 return;
             }
-            
+
             // Add new files
             imageFiles.forEach(file => {
                 selectedFiles.push(file);
@@ -1314,26 +1314,26 @@
 
         function displayImagePreview(file) {
             const reader = new FileReader();
-            
+
             reader.onload = (e) => {
                 const previewDiv = document.createElement('div');
                 previewDiv.className = 'image-preview';
                 previewDiv.dataset.filename = file.name;
-                
+
                 const img = document.createElement('img');
                 img.src = e.target.result;
-                
+
                 const removeBtn = document.createElement('button');
                 removeBtn.className = 'image-preview-remove';
                 removeBtn.innerHTML = '×';
                 removeBtn.type = 'button';
                 removeBtn.onclick = () => removeImage(file.name);
-                
+
                 previewDiv.appendChild(img);
                 previewDiv.appendChild(removeBtn);
                 imagePreviewContainer.appendChild(previewDiv);
             };
-            
+
             reader.readAsDataURL(file);
         }
 
@@ -1347,20 +1347,20 @@
             if (selectedFiles.length === 0) {
                 return [];
             }
-            
+
             uploadProgress.style.display = 'block';
             const urls = [];
-            
+
             for (let i = 0; i < selectedFiles.length; i++) {
                 const file = selectedFiles[i];
                 const filename = `compliance-photos/${Date.now()}-${file.name}`;
                 const storageRef = ref(storage, filename);
-                
+
                 uploadProgressText.textContent = `Uploading image ${i + 1} of ${selectedFiles.length}...`;
-                
+
                 try {
                     const uploadTask = uploadBytesResumable(storageRef, file);
-                    
+
                     const url = await new Promise((resolve, reject) => {
                         uploadTask.on('state_changed',
                             (snapshot) => {
@@ -1378,14 +1378,14 @@
                             }
                         );
                     });
-                    
+
                     urls.push(url);
                 } catch (error) {
                     console.error('Error uploading file:', file.name, error);
                     throw error;
                 }
             }
-            
+
             uploadProgress.style.display = 'none';
             return urls;
         }
@@ -1408,21 +1408,21 @@
         signInBtn.addEventListener('click', async () => {
             const email = signInEmail.value;
             const password = signInPassword.value;
-            
+
             if (!email || !password) {
                 showError('Please enter both email and password');
                 return;
             }
-            
+
             signInBtn.disabled = true;
             signInBtn.textContent = 'Signing In...';
-            
+
             try {
                 await signInWithEmailAndPassword(auth, email, password);
             } catch (error) {
                 console.error('Sign in error:', error);
                 let errorMsg = 'Sign in failed. ';
-                
+
                 switch (error.code) {
                     case 'auth/user-not-found':
                     case 'auth/wrong-password':
@@ -1437,7 +1437,7 @@
                     default:
                         errorMsg += error.message;
                 }
-                
+
                 showError(errorMsg);
             } finally {
                 signInBtn.disabled = false;
@@ -1449,13 +1449,13 @@
         googleSignInBtn.addEventListener('click', async () => {
             googleSignInBtn.disabled = true;
             googleSignInBtn.textContent = 'Signing In...';
-            
+
             try {
                 await signInWithPopup(auth, googleProvider);
             } catch (error) {
                 console.error('Google sign in error:', error);
                 let errorMsg = 'Google sign in failed. ';
-                
+
                 if (error.code === 'auth/popup-closed-by-user') {
                     errorMsg += 'Sign in cancelled.';
                 } else if (error.code === 'auth/unauthorized-domain') {
@@ -1463,7 +1463,7 @@
                 } else {
                     errorMsg += error.message;
                 }
-                
+
                 showError(errorMsg);
             } finally {
                 googleSignInBtn.disabled = false;
@@ -1485,7 +1485,7 @@
                 await signOut(auth);
                 signInEmail.value = '';
                 signInPassword.value = '';
-                
+
                 // Clear image uploads
                 selectedFiles = [];
                 uploadedImageUrls = [];
@@ -1499,17 +1499,17 @@
         // Form submission handler
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Check if user is authenticated
             if (!auth.currentUser) {
                 showError('You must be signed in to submit the form');
                 return;
             }
-            
+
             // Disable submit button
             submitBtn.disabled = true;
             submitBtn.textContent = 'Uploading Images...';
-            
+
             // Hide previous messages
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
@@ -1517,17 +1517,17 @@
             try {
                 // Upload images first
                 const imageUrls = await uploadImages();
-                
+
                 submitBtn.textContent = 'Submitting Form...';
-                
+
                 // Collect form data
                 const formData = new FormData(form);
                 const data = {};
-                
+
                 for (let [key, value] of formData.entries()) {
                     data[key] = value;
                 }
-                
+
                 // Add metadata
                 data.submittedAt = new Date().toISOString();
                 data.submittedBy = auth.currentUser.email;
@@ -1537,25 +1537,25 @@
                 // Add document to Firestore
                 const docRef = await addDoc(collection(db, "complianceReviews"), data);
                 console.log("Document written with ID: ", docRef.id);
-                
+
                 // Show success message
                 successMessage.style.display = 'block';
-                
+
                 // Reset form
                 form.reset();
                 selectedFiles = [];
                 uploadedImageUrls = [];
                 imagePreviewContainer.innerHTML = '';
                 fileInput.value = '';
-                
+
                 // Scroll to top to show success message
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
+
                 // Hide success message after 5 seconds
                 setTimeout(() => {
                     successMessage.style.display = 'none';
                 }, 5000);
-                
+
             } catch (error) {
                 console.error("Error submitting form: ", error);
                 showError('Error submitting form: ' + error.message);
@@ -1571,7 +1571,7 @@
             errorMessage.textContent = message;
             errorMessage.style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
+
             setTimeout(() => {
                 errorMessage.style.display = 'none';
             }, 5000);
